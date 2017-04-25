@@ -33,28 +33,38 @@ function numberToWords(number, str=[]) {
   }
   switch(numArr.length) {
     case 2:
-      angka+=' puluh';
-      break;
-    case 3:
-      angka+=' ratus';
-      break;
-    case 4:
-      angka+=' ribu';
-      break;
     case 5:
-      angka+=' puluh';
-      break;
+    case 8:
+    case 11:
+      if(number>denominator && number<2*denominator) {
+        angka=(number%denominator).toString()[0]+' belas';
+        number=number%denominator;
+        break;
+      } else {
+        angka+=' puluh';
+        break;
+      }
+    case 3:
     case 6:
-      angka+=' ratus';
-      break;
+    case 9:
+    case 12:
+      if(angka=='satu') {
+        angka='seratus';
+        break;
+      } else {
+        angka+=' ratus';
+        break;
+      }
+    case 4:
+      if(angka=='satu' && str.length==0) {
+        angka='seribu';
+        break;
+      } else {
+        angka+=' ribu';
+        break;
+      }
     case 7:
       angka+=' juta';
-      break;
-    case 8:
-      angka+=' puluh';
-      break;
-    case 9:
-      angka+=' ratus';
       break;
     case 10:
       angka+=' milyar';
@@ -69,7 +79,7 @@ function numberToWords(number, str=[]) {
 }
 
 // Driver code
-console.log(numberToWords(1000000));
+console.log(numberToWords(121000));
 
 module.exports = {
   numberToWords: numberToWords
