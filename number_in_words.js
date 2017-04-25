@@ -15,12 +15,21 @@ function numberToWords(number) {
     result = "Seratus" + numberToWords(number - 100);
   } else if (number >= 200 && number < 1000){
     result = word[Math.floor(number/100)] + " Ratus " + numberToWords(number - (Math.floor(number/100)*100));
-  } 
+  } else if (number >= 1000 && number < 1000000){
+    result = numberToWords(Math.floor(number/1000)) + " Ribu " + numberToWords(number - (Math.floor(number/1000)*1000))
+  } else if (number >= 1000000 && number < 1000000000){
+    result = numberToWords(Math.floor(number/1000000)) + " Juta " + numberToWords(number - (Math.floor(number/1000000)*1000000))
+  } else if (number >= 1000000000 && number < 1000000000000){
+    result = numberToWords(Math.floor(number/1000000000)) + " Milyar " + numberToWords(number - (Math.floor(number/1000000000)*1000000000))
+  } else if (number >= 1000000000000 && number < 1000000000000000){
+    result = numberToWords(Math.floor(number/1000000000000)) + " Trilyun " + numberToWords(number - (Math.floor(number/1000000000000)*1000000000000))
+  }
+  // }
   return result;
 }
 
 // Driver code
-console.log(numberToWords(197));
+console.log(numberToWords(723882279659487));
 
 module.exports = {
   numberToWords: numberToWords
