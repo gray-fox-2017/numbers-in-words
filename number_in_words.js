@@ -16,7 +16,7 @@ function numberToWords(number) {
       if (ang > bat) {
         count++;
         return selidikAngka(ang-bat);
-      } else if (ang < bat) {
+      } else if (bat < ang) {
         hasil.push(angkaAwal[count]);
 
         if (batas>12) {
@@ -78,7 +78,7 @@ console.log(numberToWords(500));
 console.log(numberToWords(5000));
 console.log(numberToWords(50000));
 console.log(numberToWords(500000));
-console.log(numberToWords(5000000));
+console.log(numberToWords(5000023));
 console.log(numberToWords(50000000));
 console.log(numberToWords(500000000));
 console.log(numberToWords(5000000000));
