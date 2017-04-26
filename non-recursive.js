@@ -43,4 +43,4 @@ function numberToWords(number) {
 // for(let i = 0; i < 10000; i++) {
 //   console.log(numberToWords(i));
 // }
-console.log(numberToWords(1217));
+console.log(numberToWords(1221));

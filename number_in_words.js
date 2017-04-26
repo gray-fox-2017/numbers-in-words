@@ -1,85 +1,56 @@
-function numberToWords(number, str=[]) {
-  let numArr=number.toString().split('');
-  let denominator=Math.pow(10,numArr.length-1);
-  let angka;
-  switch(Math.floor(number/denominator)) {
-    case 1:
-      angka='satu';
-      break;
-    case 2:
-      angka='dua';
-      break;
-    case 3:
-      angka='tiga';
-      break;
-    case 4:
-      angka='empat';
-      break;
-    case 5:
-      angka='lima';
-      break;
-    case 6:
-      angka='enam';
-      break;
-    case 7:
-      angka='tujuh';
-      break;
-    case 8:
-      angka='delapan';
-      break;
-    case 9:
-      angka='sembilan';
-      break;
-  }
-  switch(numArr.length) {
-    case 2:
-    case 5:
-    case 8:
-    case 11:
-      if(number>denominator && number<2*denominator) {
-        angka=(number%denominator).toString()[0]+' belas';
-        number=number%denominator;
-        break;
-      } else {
-        angka+=' puluh';
-        break;
-      }
-    case 3:
-    case 6:
-    case 9:
-    case 12:
-      if(angka=='satu') {
-        angka='seratus';
-        break;
-      } else {
-        angka+=' ratus';
-        break;
-      }
-    case 4:
-      if(angka=='satu' && str.length==0) {
-        angka='seribu';
-        break;
-      } else {
-        angka+=' ribu';
-        break;
-      }
-    case 7:
-      angka+=' juta';
-      break;
-    case 10:
-      angka+=' milyar';
-      break;
-  }
-  str.push(angka);
-  if(number<10) {
-    return str.join(' ');
+'use strict'
+
+var satuan = ['satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas', 'dua belas', 'tiga belas', 'empat belas', 'lima belas', 'enam belas', 'tujuh belas', 'delapan belas', 'sembilan belas'];
+var orde = ['', ' ribu', ' juta', ' milyar', ' triliun'];
+
+function numberToWords(number, gabung = []) {
+  let bagian = number % 1000;
+
+  let ucapan = [];
+  console.log(number)
+  if(bagian / 100 >= 1) {
+    ucapan.push(satuan[Math.floor(bagian / 100)-1] + ' ratus ');
+    if(Math.floor(bagian / 100) == 1) {
+      ucapan.pop();
+      ucapan.push('seratus ');
+    }
   } else {
-    return numberToWords(number%denominator, str);
+    ucapan.push('');
+  }
+  bagian = bagian % 100;
+
+  if(bagian >= 20) {
+    ucapan.push(satuan[Math.floor(bagian / 10)-1] + ' puluh ');
+    bagian = bagian % 10;
+  } else {
+    ucapan.push('');
+  }
+
+  if(bagian < 20 && bagian > 0) {
+    ucapan.push(satuan[bagian - 1]);
+  } else {
+    ucapan.push('')
+  }
+
+  gabung.push(ucapan);
+
+  if(number < 999) {
+    for(let i = 0; i < gabung.length; i++) {
+      gabung[i].push(orde[i]);
+      gabung[i]=gabung[i].join('');
+      console.log(gabung[i])
+    }
+    return gabung.reverse().join(' ');
+  } else {
+    number = Math.floor(number / 1000);
+    return numberToWords(number, gabung);
   }
 }
 
-// Driver code
-console.log(numberToWords(121000));
+// for(let i = 0; i < 10000; i++) {
+//   console.log(numberToWords(i));
+// }
+console.log(numberToWords(3172621));
 
 module.exports = {
   numberToWords: numberToWords
