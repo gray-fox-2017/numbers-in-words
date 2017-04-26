@@ -1,6 +1,5 @@
 function numberToWords(number) {
   // Your code here
-<<<<<<< HEAD
   
   function angkaKeKata(input) {
     var hasil = [];
@@ -17,7 +16,7 @@ function numberToWords(number) {
       if (ang > bat) {
         count++;
         return selidikAngka(ang-bat);
-      } else if (ang < bat) {
+      } else if (ang < bat) {	
         hasil.push(angkaAwal[count]);
         
         if (batas>12) {
@@ -44,9 +43,9 @@ function numberToWords(number) {
   
   }
   
-  var hampir = angkaKeKata(input);
+  var hampir = angkaKeKata(number);
   
-  for (let i=0; i<hampir.length;i++) {
+  for (let i=0; i<hampir.length;i++) {	
     if (hampir[i] === 'satu') {
       if (hampir[i+1] === 'ratus') {
         hampir.splice(i,2, 'seratus');
@@ -60,42 +59,6 @@ function numberToWords(number) {
   
   return hampir.join(' ')
   
-}
-
-
-=======
-  var bilangan = ['nol', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas']
-  var hasil = [];
-  var penyebut = ['belas', 'puluh', 'ratus', 'ribu', 'puluh', 'ratus', 'juta', 'puluh', 'ratus', 'milyar', 'puluh', 'ratus', 'triliun', 'puluh', 'ratus']
-  var count = 1;
-
-function penyebutAngka(num) {
-  if (num/10 < 1.2) {
-    count++
-    hasil.push(bilangan[num]);
-  } else if (num/10 >= 1.2 && num/10 < 2) {
-    count++
-    hasil.push(bilangan[num%10]);
-    hasil.push('belas');
-
-  } else if (num/10 >= 2) {
-    count++;
-    return penyebutAngka(num/10);
-  }
-
-  var angStr = num.toString().split('')
-  return angStr;
-}
-
-
-  if (number<=11) {
-    return bilangan[number];
-  } else {
-    return penyebutAngka(number);
-  }
-
-
->>>>>>> 9ea62c1c56f55136af6d88d6caa9dec73112eb8d
 }
 
 // Driver code
