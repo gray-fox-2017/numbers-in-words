@@ -7,39 +7,32 @@ function numberToWords(number, gabung = []) {
   let bagian = number % 1000;
 
   let ucapan = [];
-  console.log(number)
   if(bagian / 100 >= 1) {
     ucapan.push(satuan[Math.floor(bagian / 100)-1] + ' ratus ');
     if(Math.floor(bagian / 100) == 1) {
       ucapan.pop();
       ucapan.push('seratus ');
     }
-  } else {
-    ucapan.push('');
   }
   bagian = bagian % 100;
 
   if(bagian >= 20) {
     ucapan.push(satuan[Math.floor(bagian / 10)-1] + ' puluh ');
     bagian = bagian % 10;
-  } else {
-    ucapan.push('');
   }
 
   if(bagian < 20 && bagian > 0) {
     ucapan.push(satuan[bagian - 1]);
-  } else {
-    ucapan.push('')
   }
 
   gabung.push(ucapan);
 
   if(number < 999) {
     for(let i = 0; i < gabung.length; i++) {
-      gabung[i].push(orde[i]);
-      gabung[i]=gabung[i].join('');
-      console.log(gabung[i])
+      if(gabung[i].join('') !== '') gabung[i].push(orde[i]);
+      gabung[i] = gabung[i].join('');
     }
+    if(gabung[1] == 'satu ribu') gabung[1] = 'seribu';
     return gabung.reverse().join(' ');
   } else {
     number = Math.floor(number / 1000);
@@ -50,7 +43,7 @@ function numberToWords(number, gabung = []) {
 // for(let i = 0; i < 10000; i++) {
 //   console.log(numberToWords(i));
 // }
-console.log(numberToWords(3172621));
+console.log(numberToWords(3167832123));
 
 module.exports = {
   numberToWords: numberToWords
