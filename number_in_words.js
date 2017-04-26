@@ -58,12 +58,9 @@ console.log(numberToWords(121));
 console.log(numberToWords(25)); //dua puluh lima
 console.log(numberToWords(250)); //dua ratus lima puluh
 console.log(numberToWords(1000)); //seribu
-console.log(numberToWords(1121)); //seribu
+console.log(numberToWords(1121)); //seribu 121
 console.log(numberToWords(2500)); //dua ribu lima ratus
 console.log(numberToWords(25000)); //dua puluh lima ribu
 console.log(numberToWords(10000));
 console.log(numberToWords(100000));
 console.log(numberToWords(1345000000000));
-console.log(numberToWords(250000)); //dua ratus lima puluh ribu
-console.log(numberToWords(2500000)); //dua juta lima ratus ribu
-console.log(numberToWords(25000000)); //dua puluh lima juta lima ratus
