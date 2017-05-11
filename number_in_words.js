@@ -13,7 +13,7 @@ function numberToWords(number) {
   } else if (number < 1000) {
     return terbilang[Math.floor(number / 100)] + "ratus " + numberToWords(number % 100);
   } else if (number < 2000) {
-    return "seribu " + numberToWords(number % 1000);
+    return "seribu " + numberToWords(number % 1000); 
   } else if (number < 1000000) {
     return numberToWords(Math.floor(number / 1000)) + "ribu " + numberToWords(number % 1000);
   } else if (number < 1000000000) {
